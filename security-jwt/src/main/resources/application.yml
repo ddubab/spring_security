@@ -1,0 +1,35 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: security-jwt
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 100
+
+  h2:
+    console:
+      enabled: true  # H2 Console? ???? ?? (H2 Console? H2 Database? UI? ????? ??)
+      path: /h2-console  # H2 Console? Path
+    # Database Setting Info (Database? H2? ???? ?? H2?? ?? ??)
+  datasource:
+    driver-class-name: org.h2.Driver  # Database? H2? ?????.
+    url: jdbc:h2:mem:test # H2 ?? ??
+    username: sa  # H2 ?? ? ??? username ?? (??? ??? ??)
+    password:  # H2 ?? ? ??? password ?? (??? ??? ??)
+jwt:
+  secret: 63fba97a41e0d004e10e8dbbcb9a547819280efb00a54c732aca36a8a58258e4fcc539ffc5159a7f0a7be78b86efe001c12ba6af6debeb0a89e8ce7e82e75455
+
+  access:
+    expiration: 80
+    header: Authorization
+
+  refresh:
+    expiration: 90
+    header: Authorization-refresh
